@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- {{ book }}——实时显示$el绑定的数据 -->
+        {{ book }}
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: {
+                book: '《Vue.js实战》'
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- {{ date }}——实时显示$el绑定的数据 -->
+        {{ date }}
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: {
+                date: new Date()
+            },
+            <!-- $el挂载到具体的Vue实例后执行 -->
+            mounted: function () {
+                var _this = this;               // 声明一个实例指向Vue实例this，保证作用域一致
+
+                // 每隔1s打印当前时间
+                this.timer = setInterval(function () {
+                    _this.date = new Date();    // 修改数据Date
+                    console.log(_this.date);
+                }, 1000);
+            },
+
+            <!--Vue实例销毁之前执行的代码-->
+            beforeDestroy: function () {
+                if (this.timer) {
+                    clearInterval(this.timer);  // 在Vue实例销毁前,清除我们的定时器
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+        div块
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var myData = {
+            a: 1
+        }
+
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: myData
+        })
+
+        console.log("app.a-->" + app.a);
+        // 修改属性，原数据也会随之修改
+        app.a = 2;
+        console.log("myData.a-->" + myData.a);
+
+        // 反之，修改元数据，Vue属性也会修改
+        myData.a = 3;
+        console.log("app.a-->" + app.a)
+    </script>
+
+</body>
+</html>
