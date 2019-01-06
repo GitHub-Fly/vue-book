@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReversedText</title>
+</head>
+<body>
+
+<!-- 切记： 一定要先保存，后运行，不然会出现运行不正常的问题 -->
+    <div id="app">
+        <h1>{{ reversedText }}</h1>
+        <h1>{{ myName }}</h1>
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // 定义vue实例，绑定在DOM元素app上
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: {
+                text: '123,456'
+            },
+            <!-- computed: 计算属性 -->
+            computed: {
+                reversedText: function () {
+                    return this.text.split(',').reverse().join(',')
+                },
+                myName: function () {
+                    return this.text.split(',').sort()
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

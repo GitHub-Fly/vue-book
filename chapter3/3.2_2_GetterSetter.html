@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GetterSetter</title>
+</head>
+<body>
+
+    <!-- 切记： 一定要先保存，后运行，不然会出现运行不正常的问题 -->
+    <div id="app">
+        <h1>姓名: {{ fullName }}</h1>
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // 定义vue实例，绑定在DOM元素app上
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: {
+                firstName: 'Jack',
+                lastName: 'Green'
+            },
+            <!-- computed: 计算属性 -->
+            computed: {
+                fullName: {
+                    // getter, 用于读取
+                    get: function () {
+                        return this.firstName + ' ' + this.lastName;
+                    },
+
+                    // setter，写入时触发
+                    set: function (newValue) {
+                        var names = newValue.split(',');
+                        this.firstName = names[0];
+                        this.lastName = names[names.length - 1];
+                    }
+                }
+            }
+        });
+
+        app.fullName = 'John Doe';
+
+    </script>
+
+</body>
+</html>

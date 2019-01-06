@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GetterSetter</title>
+</head>
+<body>
+
+    <!-- 切记： 一定要先保存，后运行，不然会出现运行不正常的问题 -->
+    <div id="app">
+        <h1>{{ reversedText() }}</h1>
+    </div>
+
+    <!-- 引入Vue组件 -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // 定义vue实例，绑定在DOM元素app上
+        var app = new Vue({
+            <!-- el: 要进行数据绑定的DOM元素 -->
+            el: '#app',
+            <!-- data: 要绑定在DOM元素上的数据 -->
+            data: {
+                text: '123,456'
+            },
+            <!-- 用methods属性取代计算属性computed -->
+            methods: {
+                reversedText: function () {
+                    // 这里的this指向的是当前Vue实例
+                    return this.text.split(',').reverse().join(',')
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
